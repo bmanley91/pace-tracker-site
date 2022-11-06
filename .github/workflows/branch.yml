@@ -8,7 +8,7 @@ on:
         branches-ignore: [master]
 
 jobs:
-    name: Branch Checks
+    branch_checks:
     build:
         runs-on: ubuntu-latest
 
