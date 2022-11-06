@@ -1,7 +1,6 @@
 import React from 'react';
 import Container from '@mui/material/Container';
-import { Typography } from '@mui/material';
-import ProTip from '../../ProTip';
+import Calculator from '../calculator/Calculator';
 
 const BodyContainer = () => {
     return (
@@ -14,10 +13,7 @@ const BodyContainer = () => {
                 minWidth: 300,
             }}
         >
-            <Typography variant="h4" component="h1" gutterBottom>
-                Create React App example
-            </Typography>
-            <ProTip />
+            <Calculator />
         </Container>
     );
 };
