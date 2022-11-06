@@ -19,7 +19,7 @@
         "build": "react-scripts build",
         "test": "react-scripts test",
         "eject": "react-scripts eject",
-        "ci": "yarn check && yarn build",
+        "clean-and-check": "yarn clean && yarn check && yarn build",
         "lint": "eslint '*/**/*.js' && prettier '*/**/*.js' --check",
         "lint:fix": "eslint \"**/src/*.js\" --fix",
         "clean": "rimraf build",
