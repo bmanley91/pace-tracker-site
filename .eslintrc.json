@@ -1,0 +1,23 @@
+{
+    "extends": [
+      "eslint:recommended",
+      "plugin:react/recommended"
+    ],
+    "env": {
+      "browser": true,
+      "jest": true
+    },
+    "parserOptions": {
+      "ecmaVersion": 2017,
+      "sourceType": "module",
+      "ecmaFeatures": {
+        "jsx": true
+      }
+    },
+    "rules": {
+      "semi": "error",
+      "quotes": ["error", "single"],
+      "react/prop-types": "off"
+    },
+    "plugins": ["testing-library"]
+}

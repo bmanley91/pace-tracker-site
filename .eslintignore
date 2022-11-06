@@ -1,0 +1,5 @@
+node_modules/
+build/
+
+# Create React App Stuff
+reportWebVitals.js
