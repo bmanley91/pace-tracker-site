@@ -1,37 +1,56 @@
 import TextField from '@mui/material/TextField';
 import Box from '@mui/system/Box';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { calculatePace, calulateTime } from '../../util/calculators';
 
 const Calculator = () => {
     const [distance, setDistance] = useState('');
     const [pace, setPace] = useState('');
     const [time, setTime] = useState('');
+    // used to regulate when calculations are made
+    const [focusedInput, setFocus] = useState(null);
+
+    const shouldCalcTime = () => focusedInput !== 'time';
+    const shouldCalcPace = () =>
+        focusedInput !== 'pace' && focusedInput !== 'distance';
+
+    useEffect(() => {
+        // If pace and distance exist and user isnt changing time, calculate time
+        if (pace && distance && shouldCalcTime()) {
+            setTime(calulateTime(pace, distance));
+        }
+
+        // If time and distance exist and user isnt changing pace, calculate pace
+        if (time && distance && shouldCalcPace()) {
+            setPace(calculatePace(time, distance));
+        }
+    }, [distance, pace, time]);
 
     return (
         <Box component="form">
             <TextField
-                label="Distance"
+                label="Distance (mi)"
                 value={distance}
-                defaultValue="Enter Distance"
                 onChange={(event) => {
                     setDistance(event.target.value);
                 }}
+                onFocus={() => setFocus('distance')}
             />
             <TextField
-                label="Pace"
+                label="Pace (min/mi)"
                 value={pace}
-                defaultValue="Enter Pace"
                 onChange={(event) => {
                     setPace(event.target.value);
                 }}
+                onFocus={() => setFocus('pace')}
             />
             <TextField
                 label="Time"
                 value={time}
-                defaultValue="Enter Total Time"
                 onChange={(event) => {
                     setTime(event.target.value);
                 }}
+                onFocus={() => setFocus('time')}
             />
         </Box>
     );
