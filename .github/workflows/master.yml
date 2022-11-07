@@ -21,13 +21,25 @@ jobs:
               uses: actions/setup-node@v3
               with:
                   node-version: ${{ matrix.node-version }}
+
             - name: Install Dependencies
               run: yarn
+
             - name: Lint
               run: yarn lint
+
             - name: Build
               run: npm run build
+
             - name: Test
               run: npm run test
-            - name: Deploy
-              run: echo 'This is where we deploy.'
+
+            - name: Configure AWS Credentials
+              uses: aws-actions/configure-aws-credentials@v1
+              with:
+                  aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+                  aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+                  aws-region: us-east-1
+
+            - name: Deploy to S3 bucket
+              run: aws s3 sync ./build/ s3://pace-checker --delete
