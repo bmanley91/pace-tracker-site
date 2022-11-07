@@ -1,7 +1,6 @@
 export const paceToSeconds = (paceString) => {
     console.log(paceString);
     const [mins, seconds] = paceString.split(':');
-    console.log(`Mins: ${mins} Seconds: ${seconds}`);
     return mins * 60 + Number(seconds);
 };
 
@@ -21,14 +20,10 @@ export const timeToSeconds = (timeInput) => {
 
     const timeNums = splitTime.map((element) => Number(element));
 
-    console.log(`splitTime: ${timeNums}`);
-
     if (timeNums.length === 3) {
         const hourSeconds = Number(timeNums[0]) * 3600;
         const minsSeconds = Number(timeNums[1]) * 60;
         const seconds = Number(timeNums[2]);
-
-        console.log(`with hours ${hourSeconds + minsSeconds + seconds}`);
 
         return hourSeconds + minsSeconds + seconds;
     } else {
