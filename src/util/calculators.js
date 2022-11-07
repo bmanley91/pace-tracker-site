@@ -1,9 +1,3 @@
-export const calulateTime = (pace, distance) => {
-    console.log('calulateTime');
-    return distance * pace;
-};
+export const calulateTime = (pace, distance) => distance * pace;
 
-export const calculatePace = (time, distance) => {
-    console.log('calulatePace');
-    return distance / time;
-};
+export const calculatePace = (time, distance) => time / distance;

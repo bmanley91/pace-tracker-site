@@ -2,11 +2,19 @@ import TextField from '@mui/material/TextField';
 import Box from '@mui/system/Box';
 import React, { useEffect, useState } from 'react';
 import { calculatePace, calulateTime } from '../../util/calculators';
+import {
+    paceToSeconds,
+    secondsToPaceString,
+    secondsToTimeString,
+    timeToSeconds,
+} from '../../util/converters';
 
 const Calculator = () => {
     const [distance, setDistance] = useState('');
     const [pace, setPace] = useState('');
+    const [paceSeconds, setPaceSeconds] = useState(null);
     const [time, setTime] = useState('');
+    const [timeSeconds, setTimeSeconds] = useState(null);
     // used to regulate when calculations are made
     const [focusedInput, setFocus] = useState(null);
 
@@ -17,12 +25,14 @@ const Calculator = () => {
     useEffect(() => {
         // If pace and distance exist and user isnt changing time, calculate time
         if (pace && distance && shouldCalcTime()) {
-            setTime(calulateTime(pace, distance));
+            setPaceSeconds(paceToSeconds(pace));
+            setTime(secondsToTimeString(calulateTime(paceSeconds, distance)));
         }
 
         // If time and distance exist and user isnt changing pace, calculate pace
         if (time && distance && shouldCalcPace()) {
-            setPace(calculatePace(time, distance));
+            setTimeSeconds(timeToSeconds(time));
+            setPace(secondsToPaceString(calculatePace(timeSeconds, distance)));
         }
     }, [distance, pace, time]);
 
