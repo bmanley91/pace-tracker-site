@@ -1,5 +1,4 @@
 export const paceToSeconds = (paceString) => {
-    console.log(paceString);
     const [mins, seconds] = paceString.split(':');
     return mins * 60 + Number(seconds);
 };
@@ -30,13 +29,11 @@ export const timeToSeconds = (timeInput) => {
         const minsSeconds = Number(timeNums[0]) * 60;
         const seconds = Number(timeNums[1]);
 
-        console.log(`No hours ${minsSeconds + seconds}`);
         return minsSeconds + seconds;
     }
 };
 
 export const secondsToPaceString = (secondsInput) => {
-    console.log(`secondsToPace input: ${secondsInput}`);
     const minutes = Math.floor(secondsInput / 60);
     const seconds = Math.ceil(secondsInput % 60);
 

@@ -11,16 +11,24 @@ import {
 
 const Calculator = () => {
     const [distance, setDistance] = useState('');
+
     const [pace, setPace] = useState('');
     const [paceSeconds, setPaceSeconds] = useState(null);
+    const [isPaceValid, setIsPaceValid] = useState(true);
+
     const [time, setTime] = useState('');
     const [timeSeconds, setTimeSeconds] = useState(null);
+    const [isTimeValid, setIsTimeValid] = useState(true);
+
     // used to regulate when calculations are made
     const [focusedInput, setFocus] = useState(null);
 
     const shouldCalcTime = () => focusedInput !== 'time';
     const shouldCalcPace = () =>
         focusedInput !== 'pace' && focusedInput !== 'distance';
+
+    const paceRegex = new RegExp('([0-9]{1,2}):([0-5][0-9])?');
+    const timeRegex = new RegExp('([0-9]{1,2}):([0-5][0-9])(:[0-9]{2})?');
 
     useEffect(() => {
         // If pace and distance exist and user isnt changing time, calculate time
@@ -50,17 +58,31 @@ const Calculator = () => {
                 label="Pace (min/mi)"
                 value={pace}
                 onChange={(event) => {
+                    if (paceRegex.test(event.target.value)) {
+                        setIsPaceValid(true);
+                    } else {
+                        setIsPaceValid(false);
+                    }
                     setPace(event.target.value);
                 }}
                 onFocus={() => setFocus('pace')}
+                error={!isPaceValid}
+                helperText="Format mm:ss"
             />
             <TextField
                 label="Time"
                 value={time}
                 onChange={(event) => {
+                    if (timeRegex.test(event.target.value)) {
+                        setIsTimeValid(true);
+                    } else {
+                        setIsTimeValid(false);
+                    }
                     setTime(event.target.value);
                 }}
+                error={!isTimeValid}
                 onFocus={() => setFocus('time')}
+                helperText="Format mm:ss or hh:mm:ss"
             />
         </Box>
     );
