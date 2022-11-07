@@ -45,16 +45,24 @@ const Calculator = () => {
     }, [distance, pace, time]);
 
     return (
-        <Box component="form">
+        <Box
+            component="form"
+            alignItems="center"
+            justifyContent="center"
+            display="flex"
+        >
             <TextField
+                sx={{ mx: 2 }}
                 label="Distance (mi)"
                 value={distance}
                 onChange={(event) => {
                     setDistance(event.target.value);
                 }}
                 onFocus={() => setFocus('distance')}
+                helperText="Distance in miles"
             />
             <TextField
+                sx={{ mx: 2 }}
                 label="Pace (min/mi)"
                 value={pace}
                 onChange={(event) => {
@@ -70,6 +78,7 @@ const Calculator = () => {
                 helperText="Format mm:ss"
             />
             <TextField
+                sx={{ mx: 2 }}
                 label="Time"
                 value={time}
                 onChange={(event) => {
