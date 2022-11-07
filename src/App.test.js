@@ -4,6 +4,6 @@ import React from 'react';
 
 test('renders learn react link', () => {
     render(<App />);
-    const linkElement = screen.getByText(/React/i);
+    const linkElement = screen.getByText(/Pace Checker/i);
     expect(linkElement).toBeInTheDocument();
 });
