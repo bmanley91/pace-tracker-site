@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Container from '@mui/material/Container';
 import Calculator from '../calculator/Calculator';
 import { Typography } from '@mui/material';
+import Preset from '../preset/Preset';
 
 const BodyContainer = () => {
+    const [preset, setPreset] = useState(null);
+
     return (
         <Container
             sx={{
@@ -15,9 +18,11 @@ const BodyContainer = () => {
             }}
         >
             <Typography variant="h6" textAlign="center" sx={{ pb: 2 }}>
-                Enter race info below to calculate time and pace
+                Enter race info below to calculate time and pace or select a
+                preset below
             </Typography>
-            <Calculator />
+            <Preset updatePreset={setPreset} />
+            <Calculator preset={preset} />
         </Container>
     );
 };
