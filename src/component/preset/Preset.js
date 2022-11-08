@@ -1,6 +1,6 @@
 import React from 'react';
 import { MenuItem, TextField } from '@mui/material';
-import { presets } from '../../data/presets';
+import { presets } from '../../data/presets-list';
 
 const Preset = (props) => {
     const handleChange = (event) => {
