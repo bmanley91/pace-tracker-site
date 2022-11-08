@@ -66,7 +66,7 @@ const Calculator = (props) => {
         >
             <Grid item xs={12} md={4}>
                 <TextField
-                    sx={{ mx: 2 }}
+                    sx={{ m: 1 }}
                     label="Distance (mi)"
                     value={distance}
                     onChange={(event) => {
@@ -78,7 +78,7 @@ const Calculator = (props) => {
             </Grid>
             <Grid item xs={12} md={4}>
                 <TextField
-                    sx={{ mx: 2 }}
+                    sx={{ m: 1 }}
                     label="Pace (min/mi)"
                     value={pace}
                     onChange={(event) => {
@@ -97,7 +97,7 @@ const Calculator = (props) => {
 
             <Grid item xs={12} md={4}>
                 <TextField
-                    sx={{ mx: 2 }}
+                    sx={{ m: 1 }}
                     label="Time"
                     value={time}
                     onChange={(event) => {
