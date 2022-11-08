@@ -1,6 +1,7 @@
 import React from 'react';
 import Container from '@mui/material/Container';
 import Calculator from '../calculator/Calculator';
+import { Typography } from '@mui/material';
 
 const BodyContainer = () => {
     return (
@@ -13,6 +14,9 @@ const BodyContainer = () => {
                 minWidth: 300,
             }}
         >
+            <Typography variant="h6" textAlign="center" sx={{ pb: 2 }}>
+                Enter race info below to calculate time and pace
+            </Typography>
             <Calculator />
         </Container>
     );

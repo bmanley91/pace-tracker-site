@@ -6,7 +6,7 @@ import BodyContainer from './component/body-container/BodyContainer';
 
 const App = () => {
     return (
-        <Container maxWidth={false}>
+        <Container minWidth="80%">
             <Header />
             <BodyContainer />
             <Copyright />
