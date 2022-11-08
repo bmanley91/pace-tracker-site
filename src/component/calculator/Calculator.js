@@ -9,7 +9,7 @@ import {
     timeToSeconds,
 } from '../../util/converters';
 
-const Calculator = () => {
+const Calculator = (props) => {
     const [distance, setDistance] = useState('');
 
     const [pace, setPace] = useState('');
@@ -43,6 +43,19 @@ const Calculator = () => {
             setPace(secondsToPaceString(calculatePace(timeSeconds, distance)));
         }
     }, [distance, pace, time]);
+
+    useEffect(() => {
+        if (props.preset) {
+            setFocus('distance');
+            setPace(props.preset.pace);
+            setTime(props.preset.time);
+            setDistance(props.preset.distance);
+        } else {
+            setPace('');
+            setTime('');
+            setDistance('');
+        }
+    }, [props.preset]);
 
     return (
         <Grid
