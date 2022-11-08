@@ -13,7 +13,10 @@ const Preset = (props) => {
             label="Preset"
             id="preset-select"
             onChange={handleChange}
-            sx={{ width: '50%', mx: '25%', mb: 2 }}
+            sx={{ width: '75%', mx: '12%', mb: 2 }}
+            SelectProps={{
+                autoWidth: true,
+            }}
         >
             <MenuItem value={''}>{<em>None</em>}</MenuItem>
             <MenuItem value={presets.nycMenFullQualifier}>
