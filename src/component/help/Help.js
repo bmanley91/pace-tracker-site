@@ -37,7 +37,7 @@ const Help = () => {
                     horizontal: 'left',
                 }}
                 PaperProps={{
-                    style: { width: '30%' },
+                    style: { maxWidth: '50%' },
                 }}
             >
                 <Box sx={{ p: 2 }}>
