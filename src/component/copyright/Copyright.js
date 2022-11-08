@@ -4,11 +4,7 @@ import { Box } from '@mui/system';
 
 const Copyright = () => {
     return (
-        <Box
-            sx={{
-                my: 1,
-            }}
-        >
+        <Box>
             <Typography variant="body2" color="text.secondary" align="center">
                 {'Copyright © '}
                 <Link color="inherit" href="https://manley.dev">
