@@ -1,6 +1,6 @@
 export const presets = [
     {
-        displayName: 'NYC Half-Marathon Qualifier (M 18-34)',
+        displayName: 'NYC Half Marathon Qualifier (M 18-34)',
         distance: 13.1,
         time: '1:21:00',
         pace: '6:11',
@@ -12,7 +12,7 @@ export const presets = [
         pace: '6:37',
     },
     {
-        displayName: 'NYC Half-Marathon Qualifier (F 18-34)',
+        displayName: 'NYC Half Marathon Qualifier (F 18-34)',
         distance: 13.1,
         time: '1:32:00',
         pace: '7:02',
@@ -89,4 +89,58 @@ export const presets = [
         time: '10:05',
         pace: '4:24:00',
     },
-];
+    {
+        displayName: '5k Average - Beginner',
+        distance: 3.1,
+        time: '32:00',
+        pace: '10:20',
+    },
+    {
+        displayName: '5k Average - Intermediate',
+        distance: 3.1,
+        time: '23:00',
+        pace: '7:26',
+    },
+    {
+        displayName: '5k Average - Elite',
+        distance: 3.1,
+        time: '18:00',
+        pace: '5:49',
+    },
+    {
+        displayName: 'Half Marathon Average - Beginner',
+        distance: 13.1,
+        time: '2:24:57',
+        pace: '10:60',
+    },
+    {
+        displayName: 'Half Marathon Average - Intermediate',
+        distance: 13.1,
+        time: '1:50:15',
+        pace: '8:24',
+    },
+    {
+        displayName: 'Half Marathon Average - Elite',
+        distance: 13.1,
+        time: '1:20:59',
+        pace: '6:07',
+    },
+    {
+        displayName: 'Marathon Average - Beginner',
+        distance: 26.1,
+        time: '4:57:01',
+        pace: '11:21',
+    },
+    {
+        displayName: 'Marathon Average - Intermediate',
+        distance: 26.1,
+        time: '3:34:56',
+        pace: '8:13',
+    },
+    {
+        displayName: 'Marathon Average - Elite',
+        distance: 26.1,
+        time: '2:49:13',
+        pace: '6:28',
+    },
+].sort((a, b) => (a.displayName > b.displayName ? 1 : -1));
