@@ -1,37 +1,48 @@
 import React from 'react';
-import { MenuItem, TextField } from '@mui/material';
+import { Autocomplete, TextField } from '@mui/material';
 import { presets } from '../../data/presets-list';
-
 const Preset = (props) => {
-    const handleChange = (event) => {
-        props.updatePreset(event.target.value);
+    const handleChange = (newValue) => {
+        props.updatePreset(newValue);
     };
 
     return (
-        <TextField
-            select
-            label="Preset"
-            id="preset-select"
-            onChange={handleChange}
+        <Autocomplete
+            id="preset-autoselect"
             sx={{ width: '75%', mx: '12%', mb: 2 }}
-            SelectProps={{
-                autoWidth: true,
+            options={presets}
+            autoHighlight
+            getOptionLabel={(option) => option.displayName}
+            onChange={(_, newValue) => {
+                handleChange(newValue);
             }}
-        >
-            <MenuItem value={''}>{<em>None</em>}</MenuItem>
-            <MenuItem value={presets.nycMenFullQualifier}>
-                {presets.nycMenFullQualifier.displayName}
-            </MenuItem>
-            <MenuItem value={presets.nycMenHalfQualifier}>
-                {presets.nycMenHalfQualifier.displayName}
-            </MenuItem>
-            <MenuItem value={presets.nycWomenFullQualifier}>
-                {presets.nycWomenFullQualifier.displayName}
-            </MenuItem>
-            <MenuItem value={presets.nycWomenHalfQualifier}>
-                {presets.nycWomenHalfQualifier.displayName}
-            </MenuItem>
-        </TextField>
+            // renderOption={(props, option) => (
+            //     <Box
+            //         component="li"
+            //         sx={{ '& > img': { mr: 2, flexShrink: 0 } }}
+            //         {...props}
+            //     >
+            //         <img
+            //             loading="lazy"
+            //             width="20"
+            //             src={`https://flagcdn.com/w20/${option.code.toLowerCase()}.png`}
+            //             srcSet={`https://flagcdn.com/w40/${option.code.toLowerCase()}.png 2x`}
+            //             alt=""
+            //         />
+            //         {option.label} ({option.code}) +{option.phone}
+            //     </Box>
+            // )}
+            renderInput={(params) => (
+                <TextField
+                    {...params}
+                    label="Choose a country"
+                    inputProps={{
+                        ...params.inputProps,
+                        autoComplete: 'new-password', // disable autocomplete and autofill
+                    }}
+                />
+            )}
+        />
     );
 };
 
