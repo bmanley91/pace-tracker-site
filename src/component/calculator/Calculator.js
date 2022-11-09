@@ -23,9 +23,9 @@ const Calculator = (props) => {
     // used to regulate when calculations are made
     const [focusedInput, setFocus] = useState(null);
 
-    const shouldCalcTime = () => focusedInput !== 'time';
+    const shouldCalcTime = () => focusedInput !== 'time' && isPaceValid;
     const shouldCalcPace = () =>
-        focusedInput !== 'pace' && focusedInput !== 'distance';
+        focusedInput !== 'pace' && focusedInput !== 'distance' && isTimeValid;
 
     const paceRegex = new RegExp('([0-9]{1,2}):([0-5][0-9])?');
     const timeRegex = new RegExp('([0-9]{1,2}):([0-5][0-9])(:[0-9]{2})?');
