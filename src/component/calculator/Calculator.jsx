@@ -1,6 +1,6 @@
 import Grid from '@mui/material/Grid';
-import TextField from '@mui/material/TextField';
 import React, { useEffect, useState } from 'react';
+import { distanceRegex, paceRegex, timeRegex } from '../../resources/constants';
 import { calculatePace, calulateTime } from '../../util/calculators';
 import {
     paceToSeconds,
@@ -8,9 +8,12 @@ import {
     secondsToTimeString,
     timeToSeconds,
 } from '../../util/converters';
+import { calculatorFields } from './calculator-fields';
+import CalculatorField from './CalculatorField';
 
 const Calculator = (props) => {
     const [distance, setDistance] = useState('');
+    const [isDistanceValid, setIsDistanceValid] = useState(true);
 
     const [pace, setPace] = useState('');
     const [paceSeconds, setPaceSeconds] = useState(null);
@@ -23,12 +26,12 @@ const Calculator = (props) => {
     // used to regulate when calculations are made
     const [focusedInput, setFocus] = useState(null);
 
-    const shouldCalcTime = () => focusedInput !== 'time' && isPaceValid;
+    const shouldCalcTime = () =>
+        focusedInput !== calculatorFields.TIME && isPaceValid;
     const shouldCalcPace = () =>
-        focusedInput !== 'pace' && focusedInput !== 'distance' && isTimeValid;
-
-    const paceRegex = new RegExp('([0-9]{1,2}):([0-5][0-9])?');
-    const timeRegex = new RegExp('([0-9]{1,2}):([0-5][0-9])(:[0-9]{2})?');
+        focusedInput !== calculatorFields.PACE &&
+        focusedInput !== calculatorFields.DISTANCE &&
+        isTimeValid;
 
     useEffect(() => {
         // If pace and distance exist and user isnt changing time, calculate time
@@ -65,51 +68,42 @@ const Calculator = (props) => {
             style={{ textAlign: 'center' }}
         >
             <Grid item xs={12} md={4}>
-                <TextField
-                    sx={{ m: 1 }}
+                <CalculatorField
                     label="Distance (mi)"
-                    value={distance}
-                    onChange={(event) => {
-                        setDistance(event.target.value);
-                    }}
-                    onFocus={() => setFocus('distance')}
+                    field={distance}
+                    isFieldValid={isDistanceValid}
+                    setIsFieldValid={setIsDistanceValid}
+                    fieldTest={(fieldValue) => distanceRegex.test(fieldValue)}
+                    setField={setDistance}
+                    setFocus={setFocus}
+                    fieldName={calculatorFields.DISTANCE}
                     helperText="Distance in miles"
                 />
             </Grid>
             <Grid item xs={12} md={4}>
-                <TextField
-                    sx={{ m: 1 }}
+                <CalculatorField
                     label="Pace (min/mi)"
-                    value={pace}
-                    onChange={(event) => {
-                        if (paceRegex.test(event.target.value)) {
-                            setIsPaceValid(true);
-                        } else {
-                            setIsPaceValid(false);
-                        }
-                        setPace(event.target.value);
-                    }}
-                    onFocus={() => setFocus('pace')}
-                    error={!isPaceValid}
+                    field={pace}
+                    isFieldValid={isPaceValid}
+                    fieldTest={(fieldValue) => paceRegex.test(fieldValue)}
+                    setField={setPace}
+                    setFocus={setFocus}
+                    setIsFieldValid={setIsPaceValid}
+                    fieldName={calculatorFields.PACE}
                     helperText="Format mm:ss"
                 />
             </Grid>
 
             <Grid item xs={12} md={4}>
-                <TextField
-                    sx={{ m: 1 }}
+                <CalculatorField
                     label="Time"
-                    value={time}
-                    onChange={(event) => {
-                        if (timeRegex.test(event.target.value)) {
-                            setIsTimeValid(true);
-                        } else {
-                            setIsTimeValid(false);
-                        }
-                        setTime(event.target.value);
-                    }}
-                    error={!isTimeValid}
-                    onFocus={() => setFocus('time')}
+                    field={time}
+                    isFieldValid={isTimeValid}
+                    fieldTest={(fieldValue) => timeRegex.test(fieldValue)}
+                    setField={setTime}
+                    setFocus={setFocus}
+                    setIsFieldValid={setIsTimeValid}
+                    fieldName={calculatorFields.TIME}
                     helperText="Format mm:ss or hh:mm:ss"
                 />
             </Grid>
