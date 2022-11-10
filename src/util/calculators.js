@@ -1,3 +1,11 @@
-export const calulateTime = (pace, distance) => distance * pace;
+import { logAnalyticsEvent } from './firebase';
 
-export const calculatePace = (time, distance) => time / distance;
+export const calulateTime = (pace, distance) => {
+    logAnalyticsEvent('time-calculated');
+    return distance * pace;
+};
+
+export const calculatePace = (time, distance) => {
+    logAnalyticsEvent('pace-calculated');
+    return time / distance;
+};

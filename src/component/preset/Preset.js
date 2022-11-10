@@ -1,8 +1,11 @@
 import React from 'react';
 import { Autocomplete, TextField } from '@mui/material';
 import { presets } from '../../data/presets-list';
+import { logAnalyticsEvent } from '../../util/firebase';
+
 const Preset = (props) => {
     const handleChange = (newValue) => {
+        logAnalyticsEvent('preset-selected');
         props.updatePreset(newValue);
     };
 
