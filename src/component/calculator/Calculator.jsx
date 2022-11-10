@@ -1,5 +1,6 @@
 import Grid from '@mui/material/Grid';
 import React, { useEffect, useState } from 'react';
+import { distanceRegex, paceRegex, timeRegex } from '../../resources/constants';
 import { calculatePace, calulateTime } from '../../util/calculators';
 import {
     paceToSeconds,
@@ -25,13 +26,12 @@ const Calculator = (props) => {
     // used to regulate when calculations are made
     const [focusedInput, setFocus] = useState(null);
 
-    const shouldCalcTime = () => focusedInput !== 'time' && isPaceValid;
+    const shouldCalcTime = () =>
+        focusedInput !== calculatorFields.TIME && isPaceValid;
     const shouldCalcPace = () =>
-        focusedInput !== 'pace' && focusedInput !== 'distance' && isTimeValid;
-
-    const paceRegex = new RegExp('([0-9]{1,2}):([0-5][0-9])?');
-    const timeRegex = new RegExp('([0-9]{1,2}):([0-5][0-9])(:[0-9]{2})?');
-    const distanceRegex = new RegExp('[0-9.]*');
+        focusedInput !== calculatorFields.PACE &&
+        focusedInput !== calculatorFields.DISTANCE &&
+        isTimeValid;
 
     useEffect(() => {
         // If pace and distance exist and user isnt changing time, calculate time

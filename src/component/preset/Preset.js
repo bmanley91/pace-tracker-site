@@ -1,6 +1,6 @@
 import React from 'react';
 import { Autocomplete, TextField } from '@mui/material';
-import { presets } from '../../data/presets-list';
+import { presets } from '../../resources/presets-list';
 import { logAnalyticsEvent } from '../../util/firebase';
 
 const Preset = (props) => {
