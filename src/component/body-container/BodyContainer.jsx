@@ -3,9 +3,12 @@ import Container from '@mui/material/Container';
 import Calculator from '../calculator/Calculator';
 import { Typography } from '@mui/material';
 import Preset from '../preset/Preset';
+import Source from '../source/Source';
 
 const BodyContainer = () => {
     const [preset, setPreset] = useState(null);
+
+    const shouldDisplaySource = () => preset && preset.source;
 
     return (
         <Container
@@ -23,6 +26,12 @@ const BodyContainer = () => {
             </Typography>
             <Preset updatePreset={setPreset} />
             <Calculator preset={preset} />
+            {shouldDisplaySource() && (
+                <Source
+                    url={preset.source.url}
+                    displayName={preset.source.displayName}
+                />
+            )}
         </Container>
     );
 };
