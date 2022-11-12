@@ -1,5 +1,6 @@
 import Grid from '@mui/material/Grid';
 import React, { useEffect, useState } from 'react';
+
 import { distanceRegex, paceRegex, timeRegex } from '../../resources/constants';
 import { calculatePace, calulateTime } from '../../util/calculators';
 import {
@@ -8,8 +9,8 @@ import {
     secondsToTimeString,
     timeToSeconds,
 } from '../../util/converters';
-import { calculatorFields } from './calculator-fields';
 import CalculatorField from './CalculatorField';
+import { calculatorFields } from './calculator-fields';
 
 const Calculator = (props) => {
     const [distance, setDistance] = useState('');

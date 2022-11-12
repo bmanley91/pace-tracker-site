@@ -1,5 +1,9 @@
-import { AppBar, Grid, Toolbar, Typography } from '@mui/material';
+import AppBar from '@mui/material/AppBar';
+import Grid from '@mui/material/Grid';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
 import React from 'react';
+
 import Help from '../help/Help';
 
 const Header = () => {
@@ -8,10 +12,10 @@ const Header = () => {
             <Toolbar>
                 <Grid container>
                     <Grid item xs={11.5}>
-                        <Typography variant="h6">Pace Checker</Typography>
+                        <Typography variant="h4">Pace Checker</Typography>
                     </Grid>
 
-                    <Grid container item xs={0.5} justifyContent="flex-end">
+                    <Grid container item xs={0.4} justifyContent="flex-end">
                         <Help />
                     </Grid>
                 </Grid>

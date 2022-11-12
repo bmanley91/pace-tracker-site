@@ -26,7 +26,7 @@
         "eject": "react-scripts eject",
         "clean-and-check": "yarn clean && yarn check && yarn build",
         "lint": "eslint '*/**/*.js' && prettier '*/**/*.js' --check",
-        "lint:fix": "eslint \"**/src/*.js\" --fix",
+        "lint:fix": "eslint '**/src/*.js' --fix",
         "clean": "rimraf build",
         "check": "yarn lint && yarn test"
     },
@@ -49,6 +49,7 @@
         ]
     },
     "devDependencies": {
+        "@trivago/prettier-plugin-sort-imports": "^3.4.0",
         "eslint": "^8.27.0",
         "eslint-config-prettier": "^8.5.0",
         "eslint-plugin-prettier": "^4.2.1",

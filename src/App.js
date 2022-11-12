@@ -1,8 +1,9 @@
-import React from 'react';
 import Container from '@mui/material/Container';
-import Header from './component/header/Header';
+import React from 'react';
+
 import BodyContainer from './component/body-container/BodyContainer';
 import Footer from './component/footer/Footer';
+import Header from './component/header/Header';
 import { logAnalyticsEvent } from './util/firebase';
 
 const App = () => {
