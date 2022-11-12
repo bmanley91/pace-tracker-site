@@ -8,10 +8,10 @@ const Header = () => {
             <Toolbar>
                 <Grid container>
                     <Grid item xs={11.5}>
-                        <Typography variant="h6">Pace Checker</Typography>
+                        <Typography variant="h4">Pace Checker</Typography>
                     </Grid>
 
-                    <Grid container item xs={0.5} justifyContent="flex-end">
+                    <Grid container item xs={0.4} justifyContent="flex-end">
                         <Help />
                     </Grid>
                 </Grid>
