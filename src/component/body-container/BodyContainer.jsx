@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import Container from '@mui/material/Container';
+import { useTranslation } from 'react-i18next';
 import Calculator from '../calculator/Calculator';
 import { Typography } from '@mui/material';
 import Preset from '../preset/Preset';
 import Source from '../source/Source';
 
 const BodyContainer = () => {
+    const { t } = useTranslation();
+
     const [preset, setPreset] = useState(null);
 
     const shouldDisplaySource = () => preset && preset.source;
@@ -21,8 +24,7 @@ const BodyContainer = () => {
             }}
         >
             <Typography variant="h6" textAlign="center" sx={{ pb: 2 }}>
-                Enter race info below to calculate time and pace or select a
-                preset below
+                {t('instructions')}
             </Typography>
             <Preset updatePreset={setPreset} />
             <Calculator preset={preset} />
