@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
-import Container from '@mui/material/Container';
-import Calculator from '../calculator/Calculator';
 import { Typography } from '@mui/material';
+import Container from '@mui/material/Container';
+import React, { useState } from 'react';
+
+import Calculator from '../calculator/Calculator';
 import Preset from '../preset/Preset';
 import Source from '../source/Source';
 
