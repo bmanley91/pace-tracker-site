@@ -21,8 +21,7 @@ const BodyContainer = () => {
             }}
         >
             <Typography variant="h6" textAlign="center" sx={{ pb: 2 }}>
-                Enter race info below to calculate time and pace or select a
-                preset below
+                Enter race info to calculate time and pace or select a preset
             </Typography>
             <Preset updatePreset={setPreset} />
             <Calculator preset={preset} />
