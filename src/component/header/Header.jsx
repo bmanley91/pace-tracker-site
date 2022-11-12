@@ -1,4 +1,7 @@
-import { AppBar, Grid, Toolbar, Typography } from '@mui/material';
+import AppBar from '@mui/material/AppBar';
+import Grid from '@mui/material/Grid';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
 import React from 'react';
 import Help from '../help/Help';
 
