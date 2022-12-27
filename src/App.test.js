@@ -3,8 +3,11 @@ import React from 'react';
 
 import App from './App';
 
-test('renders learn react link', () => {
+test('renders learn react link', async () => {
     render(<App />);
-    const linkElement = screen.getByText(/Pace Checker/i);
-    expect(linkElement).toBeInTheDocument();
+    const foundElements = await screen.findAllByText(/Pace Checker/i);
+    expect(foundElements).toBeDefined;
+    foundElements.forEach(
+        (foundElements) => expect(foundElements).toBeInTheDocument
+    );
 });
