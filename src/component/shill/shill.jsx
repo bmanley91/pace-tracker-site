@@ -11,7 +11,11 @@ const Shill = () => {
             sx={{ mt: 1 }}
         >
             {'Do you enjoy this site? '}
-            <Link color="inherit" href="https://ko-fi.com/bmanley91">
+            <Link
+                color="inherit"
+                href="https://ko-fi.com/bmanley91"
+                target="_blank"
+            >
                 Buy me a coffee ☕️
             </Link>
         </Typography>
